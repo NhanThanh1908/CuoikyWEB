@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 8px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form nhập liệu -->
+    <p>Nhập số điện thoại</p>
+    <input id="number" type="text" placeholder="Số điện thoại cố định">
+    <span class="error" id="spannumber"></span><br>
+    <p>Nhập số điện thoại</p>
+    <input id="mobilephone" type="text" placeholder="Số di động">
+    <span class="error" id="spannobilephone"></span><br>
+    <button id="btncheck">Kiểm tra</button><br>
+    <span id="spanok"></span>
+    <script>
+        // Lấy các phần tử DOM
+        const numberInput = document.getElementById('number');
+        const mobileInput = document.getElementById('mobilephone');
+        const btnCheck = document.getElementById('btncheck');
+        const spanNumberError = document.getElementById('spannumber');
+        const spanMobileError = document.getElementById('spannobilephone');
+        const spanOK = document.getElementById('spanok');
+
+        // Hàm kiểm tra số cố định
+        function checkNumber() {
+            const pattern = /^\d{10}$/; // Regex cho 10 chữ số
+            const isValid = pattern.test(numberInput.value);
+            if (isValid) {
+                spanNumberError.innerText = "";
+                return true;
+            } else {
+                spanNumberError.innerText = "Vui lòng nhập đúng 10 chữ số";
+                return false;
+            }
+        }
+        // Hàm kiểm tra số di động
+        function checkMobilePhone() {
+            const pattern = /^\d{10}$/; // Regex cho 10 chữ số
+            const isValid = pattern.test(mobileInput.value);
+            
+            if (isValid) {
+                spanMobileError.innerText = "";
+                return true;
+            } else {
+                spanMobileError.innerText = "Vui lòng kiểm tra số di động";
+                return false;
+            }
+        }
+
+        // Hàm kiểm tra tổng hợp
+        function checkAll() {
+            const isNumberValid = checkNumber();
+            const isMobileValid = checkMobilePhone();
+            
+            if (isNumberValid && isMobileValid) {
+                spanOK.innerText = "Hợp lệ ✓";
+                spanOK.style.color = "green";
+            } else {
+                spanOK.innerText = "Vui lòng kiểm tra lại";
+                spanOK.style.color = "red";
+            }
+        }
+
+        // Gắn sự kiện click cho nút kiểm tra
+        btnCheck.addEventListener('click', checkAll);
+    </script>
+</body>
+</html>

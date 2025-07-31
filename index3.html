@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .success{
+        color: green;
+    }
+    .error{
+        color: red;
+    }
+</style>
+<body>
+    <h3>Kiểm tra Email</h3>
+    <input id="nhap1" type="text" placeholder="Nhập email">
+    <button onclick="clicked1()">Kiểm tra</button>
+    <p id="ketqua1"></p>
+    <script>
+        function clicked1() {
+        var email=document.getElementById("nhap1").value;
+        var kiemtraemail= /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9]*[a-z0-9])?/g
+        if (kiemtraemail.test(email)) {
+            document.getElementById("ketqua1").innerText="Email "+email+" hợp lý"
+            ketqua1.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua1").innerText="Email "+email+" không hợp lý"
+            ketqua1.className="error"
+            return false
+        }
+        }
+    </script>
+    <h3>Kiểm tra Số điện thoại</h3>
+    <input id="nhap2" type="text" placeholder="Nhập sdt">
+    <button onclick="clicked2()">Kiểm tra</button>
+    <p id="ketqua2"></p>
+    <script>
+        function clicked2() {
+        var sdt=document.getElementById("nhap2").value;
+        var kiemtrasdt=/^0\d{9}/
+        if (kiemtrasdt.test(sdt)) {
+            document.getElementById("ketqua2").innerText="Số điện thoại "+sdt+" hợp lý"
+            ketqua2.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua2").innerText="Số điện thoại "+sdt+" không hợp lý"
+            ketqua2.className="error"
+            return false
+        }
+    }
+    </script>
+    <h3>Kiểm tra Mật khẩu</h3>
+    <input id="nhap3" type="text" placeholder="Nhập pass">
+    <button onclick="clicked3()">Kiểm tra</button>
+    <p id="ketqua3"></p>
+    <script>
+        function clicked3() {
+        var pass=document.getElementById("nhap3").value;
+        var kiemtrapass=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+        if (kiemtrapass.test(pass)) {
+            document.getElementById("ketqua3").innerText="Mật khẩu "+pass+" hợp lý"
+            ketqua3.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua3").innerText="Mật khẩu "+pass+" không hợp lý"
+            ketqua3.className="error"
+            return false
+        }
+    }
+    </script>
+    <h3>Kiểm tra tên</h3>
+    <input id="nhap4" type="text" placeholder="Nhập tên">
+    <button onclick="clicked4()">Kiểm tra</button>
+    <p id="ketqua4"></p>
+    <script>
+        function clicked4() {
+        var ten=document.getElementById("nhap4").value;
+        var kiemtraten=/^[a-zA-ZÀ-ỹ\s]+$/
+        if (ten==""){
+            document.getElementById("ketqua4").innerText="Vui lòng nhập vào tên"
+            ketqua4.className="error"
+            return false
+        }
+        else if (!kiemtraten.test(ten)) {
+            document.getElementById("ketqua4").innerText="Tên "+ten+" không hợp lý"
+            ketqua4.className="error"
+            return false
+        }
+        else{
+            document.getElementById("ketqua4").innerText="Tên "+ten+" hợp lý"
+            ketqua4.className="success"
+            return true
+        }
+    }
+    </script>
+    <h3>Kiểm tra ngày sinh</h3>
+    <input id="nhap5" type="text" placeholder="Nhập ngày sinh của Bạn">
+    <button onclick="clicked5()">Kiểm tra</button>
+    <p id="ketqua5"></p>
+    <script>
+        function clicked5(){
+        var ngaysinh=document.getElementById("nhap5").value;
+        var kiemtrangaysinh=/^\d{2}-\d{2}-\d{4}$/
+        if(ngaysinh===""){
+            document.getElementById("ketqua5").innerText="Vui lòng nhập ngày sinh"
+            ketqua5.className="error"
+            return false
+        }
+        else if (!kiemtrangaysinh.test(ngaysinh)){
+            document.getElementById("ketqua5").innerText="Định dạng ngày sinh không hợp lý"
+            ketqua5.className="error"
+            return false
+        }
+        var phan = ngaysinh.split("-");
+        var ngay = Number(phan[0]);
+        var thang = Number(phan[1]);
+        var nam = Number(phan[2]);
+        date= new Date(nam, thang-1, ngay);
+        if (date.getDate()==ngay&& date.getMonth()==thang-1&& date.getFullYear()==nam){
+            document.getElementById("ketqua5").innerText="Ngày sinh "+ngaysinh+" hợp lý"
+            ketqua5.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua5").innerText="Ngày sinh "+ngaysinh+" không hợp lý"
+            ketqua5.className="error"
+            return false
+        }
+        }
+    </script>
+    <h3>Kiểm tra Username</h3>
+    <input id="nhap6" type="text" placeholder="Nhập Username">
+    <button onclick="clicked6()">Kiểm tra</button>
+    <p id="ketqua6"></p>
+    <script>
+        function clicked6() {
+        var username=document.getElementById("nhap6").value;
+        var kiemtrausername=/^[a-zA-Z0-9_]{5,15}$/
+        if (username==""){
+            document.getElementById("ketqua6").innerText="Vui lòng nhập Username"
+            ketqua6.className="error"
+            return false
+        }
+        else if (kiemtrausername.test(username)) {
+            document.getElementById("ketqua6").innerText="Username "+username+" hợp lý"
+            ketqua6.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua6").innerText="Username "+username+" không hợp lý"
+            ketqua6.className="error"
+            return false
+        }
+    }
+    </script>
+    <h3>Kiểm tra IP</h3>
+    <input id="nhap7" type="text" placeholder="Nhập IP">
+    <button onclick="clicked7()">Kiểm tra</button>
+    <p id="ketqua7"></p>
+    <script>
+        function clicked7() {
+        var IP=document.getElementById("nhap7").value;
+        var kiemtraIP=/^\d{3}.\d{3}.\d{1}.\d{1}$/
+        if (IP==""){
+            document.getElementById("ketqua7").innerText="Vui lòng nhập IP"
+            ketqua7.className="error"
+            return false
+        }
+        else if (kiemtraIP.test(IP)) {
+            document.getElementById("ketqua7").innerText="IP "+IP+" hợp lý"
+            ketqua7.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua7").innerText="IP "+IP+" không hợp lý"
+            ketqua7.className="error"
+            return false
+        }
+    }
+    </script>
+    <h3>Kiểm tra Mã bưu điện</h3>
+    <input id="nhap8" type="text" placeholder="Nhập mã bưu điện">
+    <button onclick="clicked8()">Kiểm tra</button>
+    <p id="ketqua8"></p>
+    <script>
+        function clicked8() {
+        var buudien=document.getElementById("nhap8").value;
+        var kiemtrabuudien=/^\d{5}$/
+        if (buudien==""){
+            document.getElementById("ketqua8").innerText="Vui lòng nhập IP"
+            ketqua8.className="error"
+            return false
+        }
+        else if (kiemtrabuudien.test(buudien)) {
+            document.getElementById("ketqua8").innerText="Mã bưu điện "+buudien+" hợp lý"
+            ketqua8.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua8").innerText="Mã bưu điện "+buudien+" không hợp lý"
+            ketqua8.className="error"
+            return false
+        }
+    }
+    </script>
+    <h3>Kiểm tra Thẻ tín dụng</h3>
+    <input id="nhap9" type="text" placeholder="Nhập thẻ tín dụng">
+    <button onclick="clicked9()">Kiểm tra</button>
+    <p id="ketqua9"></p>
+    <script>
+        function clicked9() {
+        var tindung=document.getElementById("nhap9").value;
+        var kiemtratindung=/^(\d{4} ?){4}$/
+        if (tindung==""){
+            document.getElementById("ketqua9").innerText="Vui lòng nhập IP"
+            ketqua9.className="error"
+            return false
+        }
+        else if (kiemtratindung.test(tindung)) {
+            document.getElementById("ketqua9").innerText="Thẻ tin dụng "+tindung+" hợp lý"
+            ketqua9.className="success"
+            return true
+        }
+        else{
+            document.getElementById("ketqua9").innerText="Thẻ tin dụng "+tindung+" không hợp lý"
+            ketqua9.className="error"
+            return false
+        }
+    }
+    </script>
+    <button onclick="checkAll()">Kiểm tra tất cả</button>
+    <p id="ketqua"></p>
+    <script>
+        function checkAll() {
+            clicked1()
+            clicked2()
+            clicked3()
+            clicked4()
+            clicked5()
+            clicked6()
+            clicked7()
+            clicked8()
+            clicked9()
+            if (clicked1() && clicked2() && clicked3() && clicked4()&&clicked5()&&clicked6()&&clicked7()&&clicked8()&&clicked9()){
+                document.getElementById("ketqua").innerText="Tất cả đều hợp lý"
+                ketqua.className="success"
+            }
+            else{
+                document.getElementById("ketqua").innerText="Không hợp lý"
+                ketqua.className="error"
+            }
+        }
+    </script>
+</body>
+</html>

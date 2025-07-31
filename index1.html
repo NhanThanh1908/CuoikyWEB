@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 900px;
+        margin: 0 auto;
+    }
+    .logo1 img, .logo3 img{
+        width: 50px;
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    .logo2{
+        text-align: center;
+        color: green;
+    }
+    .logo2 h3{
+        color: darkgreen;
+    }
+    .h1{
+        background-image: url(./Hinhanh/hoc-ky-quan-doi-210623.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .tieude h1{
+        text-align: center;
+        color: darkgreen;
+        font-style: italic;
+    }
+    .tieude p{
+        text-align: center;
+        color: red;
+        font-weight: bolder;
+        font-size: 20px;
+        margin: 0;
+    }
+    .h2 a{
+        padding: 20px;
+        margin: 10px;
+    }
+    .h2{
+        border: 1px solid black;
+        padding: 10px;
+    }
+    table{
+        width: 900px;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+    th, td{
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    td{
+        background-color: #ccc;
+        border-top: 1px solid black;
+    }
+    .footer{
+        text-align: center;
+    }
+    .popup {
+    display: none; /* Ẩn mặc định */
+    position: fixed;
+    z-index: 1000; /* Nổi lên trên */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* nền mờ */
+    }
+    .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    margin: 100px auto; /* canh giữa ngang */
+    position: relative;
+    }
+    .close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="h1">
+                <div class="logo">
+                <div class="logo1">
+                    <img src="./Hinhanh/Huy_Hiệu_Đoàn.png" alt="">
+                </div>
+                <div class="logo2">
+                    <p>TRUNG ƯƠNG ĐOÀN TNCS HỒ CHÍ MINH</p>
+                    <h3>TRUNG TÂM THANH THIẾU NIÊN MIỀN NAM</h3>
+                </div>
+                <div class="logo3">
+                    <img src="./Hinhanh/logo-in-an-corel-16-500x325.png" alt="">
+                </div>
+                </div>
+                <div class="tieude">
+                    <h1>HỌC KỲ QUÂN ĐỘI HÈ 2022</h1>
+                    <p>TỪ 01/6 - 30/8/2022</p>
+                </div>
+            </div>
+            <div class="h2">
+                <a href="#">Trang chủ SYC</a>
+                <a href="#" onclick="document.getElementById('form').style.display='block'">Đăng ký tham gia</a>
+            </div>
+        </div>
+        <div class="content">
+            <p>DANH SÁCH HỌC VIÊN THAM GIA</p>
+            <table>
+                <tr>
+                    <th>STT</th>
+                    <th>Họ và tên</th>
+                    <th>Giới tính</th>
+                    <th>Số điện thoại</th>
+                    <th>Ngày sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Khóa học</th>
+                    <th>Học phí</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Hoàng Lâm</td>
+                    <td>Nam</td>
+                    <td>0908888888</td>
+                    <td>20/3/2010</td>
+                    <td>123 Nguyễn Du, P5, Gò Vấp, TPHCM</td>
+                    <td>6 tuần</td>
+                    <td>6.000.000</td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer">
+            <p>23677381_Đỗ Thành Nhân_DHTMDT19C</p>
+        </div>
+    </div>
+   <div id="form" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="document.getElementById('form').style.display='none'">&times;</span>
+        <h3>THÔNG TIN HỌC VIÊN</h3>
+        <label>Họ và tên</label>
+        <input id="nhap1" type="text"><br>
+        <label>Số điện thoại</label>
+        <input id="nhap2" type="text"><br>
+        <label>Ngày sinh</label>
+        <input id="nhap3" type="date"><br>
+        <label>Địa chỉ</label>
+        <input id="nhap4" type="text"><br>
+        <label>Bạn muốn tham gia khóa nào?</label>
+        <select>
+            <option>Khóa 2 tuần</option>
+            <option>Khóa 4 tuần</option>
+            <option>Khóa 6 tuần</option>
+        </select><br>
+        <label>Học phí</label>
+        <input type="text"><br>
+        <label>Ảnh đại diện</label>
+        <input type="file"><br>
+        <button onclick="clicked()">Lưu</button>
+    </div>
+</div>
+<script>
+    function clicked(){
+        var ten=document.getElementById("nhap1").value;
+        var kiemtraten=/\[a-zA-Z]/
+        var sdt=document.getElementById("nhap2").value;
+        var ngaysinh=document.getElementById("nhap3").value;
+    }
+</script>
+</body>
+</html>
